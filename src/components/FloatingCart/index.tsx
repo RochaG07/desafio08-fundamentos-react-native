@@ -24,15 +24,27 @@ const FloatingCart: React.FC = () => {
   const navigation = useNavigation();
 
   const cartTotal = useMemo(() => {
-    // TODO RETURN THE SUM OF THE PRICE FROM ALL ITEMS IN THE CART
+    //  RETURN THE SUM OF THE PRICE FROM ALL ITEMS IN THE CART
 
-    return formatValue(0);
+    let totalPrice = 0;
+
+    products.forEach(p => {
+      totalPrice += (p.quantity * p.price);
+    });
+
+    return formatValue(totalPrice);
   }, [products]);
 
   const totalItensInCart = useMemo(() => {
-    // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    // RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    let totalItens = 0;
 
-    return 0;
+    products.forEach(p => {
+      totalItens += p.quantity;
+    });
+
+    return totalItens;
+
   }, [products]);
 
   return (
